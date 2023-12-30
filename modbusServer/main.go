@@ -19,6 +19,7 @@ func main() {
 		return
 	}
 	defer serv.Close()
+	serv.Coils[1] = 1
 	serv.HoldingRegisters[5] = 200
 	// Wait for the server to start
 	time.Sleep(1 * time.Millisecond)
@@ -47,5 +48,11 @@ func main() {
 	// read a single 16-bit holding register at address 100
 	var reg16 uint16
 	reg16, _ = client.ReadRegister(5, modbus.HOLDING_REGISTER)
+
 	fmt.Println(reg16)
+
+	client.WriteCoil(3, true)
+	fmt.Println(serv.Coils[3])
+	coil3, _ := client.ReadCoils(0, 5)
+	fmt.Println(coil3)
 }
