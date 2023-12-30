@@ -2,10 +2,11 @@ go 1.21.5
 
 use (
 	./CLI
-	./hello
 	./ProducerConsumer
 	./RESTapi
-	./redis
 	./Synchronising
+	./hello
+	./modbusServer
+	./redis
 	./unitTesting
 )
