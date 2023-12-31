@@ -9,4 +9,6 @@ use (
 	./modbusServer
 	./redis
 	./unitTesting
+	./websocketClient
+	./websocketServer
 )
