@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"plantMap/plantMap"
+
+	"github.com/aceagles/Go-Practice/csvParse/plantMap"
 )
 
 func main() {
