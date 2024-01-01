@@ -5,6 +5,7 @@ use (
 	./ProducerConsumer
 	./RESTapi
 	./Synchronising
+	./csvParse
 	./hello
 	./modbusServer
 	./redis
