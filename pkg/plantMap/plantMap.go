@@ -8,6 +8,8 @@ import (
 	"strings"
 )
 
+type plantList []plantInfo
+
 type plantInfo struct {
 	prefix, plantType, lookupIP, basePlant string
 	plantID, numericID, downstream         int
@@ -107,8 +109,6 @@ func (m *plantMap) GetPlantByType(t string) plantList {
 func (m *plantMap) GetPlantByID(t int) plantInfo {
 	return m.numericMap[t]
 }
-
-type plantList []plantInfo
 
 func (s plantList) ByPrefix(p string) (plantInfo, error) {
 	for _, v := range s {
