@@ -1,8 +1,9 @@
 package main
 
 import (
-	"example/hello/helpers"
 	"fmt"
+
+	"github.com/aceagles/Go-Practice/pkg/helpers"
 )
 
 func main() {

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/aceagles/Go-Practice/csvParse/plantMap"
+	"github.com/aceagles/Go-Practice/pkg/plantMap"
 )
 
 func main() {
