@@ -5,6 +5,8 @@ import (
 	"fmt"
 
 	"time"
+
+	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 var cnt int
@@ -25,6 +27,10 @@ func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 }
 
+func (a *App) domReady(ctx context.Context) {
+	go countUp(ctx)
+}
+
 // Greet returns a greeting for the given name
 func (a *App) Greet(name string) string {
 	return fmt.Sprintf("Hello %s, It's show time!", name)
@@ -38,9 +44,10 @@ func (a *App) GetCount() int {
 	return cnt
 }
 
-func countUp() {
+func countUp(ctx context.Context) {
 	for {
 		cnt++
+		runtime.EventsEmit(ctx, "EmitCount", cnt)
 		time.Sleep(time.Second)
 	}
 }

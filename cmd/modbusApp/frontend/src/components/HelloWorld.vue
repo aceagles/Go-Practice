@@ -1,6 +1,7 @@
 <script setup>
 import {onMounted, reactive} from 'vue'
 import {Greet2, GetCount} from '../../wailsjs/go/main/App'
+import {EventsOn} from '../../wailsjs/runtime/runtime'
 
 const data = reactive({
   name: "",
@@ -14,12 +15,10 @@ function greet() {
     data.resultText = result
   })
 }
-function updateCounter() {
-  GetCount().then(result => data.counter = result)
-}
 
 onMounted(function () {
-  data.timer = setInterval(updateCounter, 500)
+  
+  EventsOn("EmitCount", (dat) => data.counter = dat)
   console.log("Mounted")
 })
 

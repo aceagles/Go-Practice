@@ -15,8 +15,6 @@ func main() {
 	// Create an instance of the app structure
 	app := NewApp()
 
-	go countUp()
-
 	// Create application with options
 	err := wails.Run(&options.App{
 		Title:  "modbusApp",
@@ -27,6 +25,7 @@ func main() {
 		},
 		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
 		OnStartup:        app.startup,
+		OnDomReady:       app.domReady,
 		Bind: []interface{}{
 			app,
 		},
