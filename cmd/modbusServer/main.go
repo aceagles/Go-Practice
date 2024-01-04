@@ -55,4 +55,14 @@ func main() {
 	fmt.Println(serv.Coils[3])
 	coil3, _ := client.ReadCoils(0, 5)
 	fmt.Println(coil3)
+	go func() {
+		for {
+			serv.HoldingRegisters[7] = serv.HoldingRegisters[7] + 1
+			time.Sleep(time.Second)
+		}
+	}()
+
+	for {
+		time.Sleep(time.Second)
+	}
 }

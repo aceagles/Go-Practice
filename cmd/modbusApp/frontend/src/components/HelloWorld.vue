@@ -1,25 +1,15 @@
 <script setup>
-import {onMounted, reactive} from 'vue'
-import {EventsOn} from '../../wailsjs/runtime/runtime'
 import ConnectionForm from './forms/ConnectionForm.vue'
-
-const data = reactive({
-  name: "",
-  resultText: "Please enter your name below 👇",
-  timer: "",
-  counter: 0
-})
-
-
-onMounted(function () {
-  console.log("Mounted")
-})
-
+import ModbusGroupForm from './forms/ModbusGroupForm.vue'
+import RegDataList from './RegDataList.vue'
 </script>
 
 <template>
     <div>
       <connection-form />
+      <modbus-group-form />
+      <hr>
+      <reg-data-list />
     </div>
   
 </template>

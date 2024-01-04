@@ -5,3 +5,15 @@
 export function CheckSubmit(arg1) {
   return window['go']['main']['App']['CheckSubmit'](arg1);
 }
+
+export function GetGroups() {
+  return window['go']['main']['App']['GetGroups']();
+}
+
+export function StopReading() {
+  return window['go']['main']['App']['StopReading']();
+}
+
+export function UpdateGroups(arg1) {
+  return window['go']['main']['App']['UpdateGroups'](arg1);
+}
