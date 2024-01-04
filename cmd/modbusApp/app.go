@@ -2,18 +2,17 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
-
-	"time"
-
-	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 var cnt int
 
 // App struct
 type App struct {
-	ctx context.Context
+	ctx      context.Context
+	Hostname string `json:"hostname"`
+	Port     uint   `json:"port"`
 }
 
 // NewApp creates a new App application struct
@@ -28,26 +27,10 @@ func (a *App) startup(ctx context.Context) {
 }
 
 func (a *App) domReady(ctx context.Context) {
-	go countUp(ctx)
 }
 
-// Greet returns a greeting for the given name
-func (a *App) Greet(name string) string {
-	return fmt.Sprintf("Hello %s, It's show time!", name)
-}
-
-func (a *App) Greet2(name string) string {
-	return fmt.Sprintf("Goodbye %s, It's show time!", name)
-}
-
-func (a *App) GetCount() int {
-	return cnt
-}
-
-func countUp(ctx context.Context) {
-	for {
-		cnt++
-		runtime.EventsEmit(ctx, "EmitCount", cnt)
-		time.Sleep(time.Second)
-	}
+func (a *App) CheckSubmit(s string) {
+	fmt.Println("Submitted", s)
+	json.Unmarshal([]byte(s), a)
+	fmt.Println(a.Hostname, a.Port)
 }

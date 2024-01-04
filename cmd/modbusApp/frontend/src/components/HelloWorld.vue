@@ -1,7 +1,7 @@
 <script setup>
 import {onMounted, reactive} from 'vue'
-import {Greet2, GetCount} from '../../wailsjs/go/main/App'
 import {EventsOn} from '../../wailsjs/runtime/runtime'
+import ConnectionForm from './forms/ConnectionForm.vue'
 
 const data = reactive({
   name: "",
@@ -10,24 +10,17 @@ const data = reactive({
   counter: 0
 })
 
-function greet() {
-  Greet2(data.name).then(result => {
-    data.resultText = result
-  })
-}
 
 onMounted(function () {
-  
-  EventsOn("EmitCount", (dat) => data.counter = dat)
   console.log("Mounted")
 })
 
 </script>
 
 <template>
-
-    
-    <p class="bg-primary">Counter: {{data.counter}}</p>
+    <div>
+      <connection-form />
+    </div>
   
 </template>
 
